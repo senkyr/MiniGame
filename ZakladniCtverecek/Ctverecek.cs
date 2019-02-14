@@ -9,6 +9,8 @@ namespace ZakladniCtverecek
         public int Velikost { get; private set; }
         public int Rychlost { get; private set; }
 
+        public byte RychlostZmenyBarvy { get; private set; } = 2;
+
         public Color Barva;
         public Vector2 Pozice;
 
@@ -66,11 +68,11 @@ namespace ZakladniCtverecek
                 Pozice.X += Rychlost;
 
             if (Keyboard.GetState().IsKeyDown(ZmenaCerveneBarvy))
-                Barva.R += 3;
+                Barva.R += RychlostZmenyBarvy;
             if (Keyboard.GetState().IsKeyDown(ZmenaZeleneBarvy))
-                Barva.G += 3;
+                Barva.G += RychlostZmenyBarvy;
             if (Keyboard.GetState().IsKeyDown(ZmenaModreBarvy))
-                Barva.B += 3;
+                Barva.B += RychlostZmenyBarvy;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
