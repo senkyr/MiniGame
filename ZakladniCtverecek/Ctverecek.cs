@@ -76,12 +76,23 @@ namespace ZakladniCtverecek
             if (Pozice.Y > vyskaOkna - Velikost)
                 Pozice.Y = vyskaOkna - Velikost;
 
+            int cervenaPred = Barva.R;
+            int zelenaPred = Barva.G;
+            int modraPred = Barva.B;
+
             if (Keyboard.GetState().IsKeyDown(ZmenaCerveneBarvy))
                 Barva.R += RychlostZmenyBarvy;
             if (Keyboard.GetState().IsKeyDown(ZmenaZeleneBarvy))
                 Barva.G += RychlostZmenyBarvy;
             if (Keyboard.GetState().IsKeyDown(ZmenaModreBarvy))
                 Barva.B += RychlostZmenyBarvy;
+
+            if (Barva.R < cervenaPred)
+                Barva.R = 255;
+            if (Barva.G < zelenaPred)
+                Barva.G = 255;
+            if (Barva.B < modraPred)
+                Barva.B = 255;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
