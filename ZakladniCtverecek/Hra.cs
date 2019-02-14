@@ -35,7 +35,7 @@ namespace ZakladniCtverecek
             int velikostCtverecku = 50;
             int rychlostCtverecku = 5;
 
-            ctverecek = new Ctverecek(velikostCtverecku, rychlostCtverecku, Color.Black, (sirkaOkna - velikostCtverecku) / 2, (vyskaOkna - velikostCtverecku) / 2, GraphicsDevice, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.R, Keys.G, Keys.B);
+            ctverecek = new Ctverecek(velikostCtverecku, rychlostCtverecku, Color.Black, (sirkaOkna - velikostCtverecku) / 2, (vyskaOkna - velikostCtverecku) / 2, GraphicsDevice, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.R, Keys.G, Keys.B, Keys.Space);
         }
 
         protected override void Update(GameTime gameTime)

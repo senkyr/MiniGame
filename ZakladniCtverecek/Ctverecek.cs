@@ -14,6 +14,8 @@ namespace ZakladniCtverecek
         public Color Barva;
         public Vector2 Pozice;
 
+        public Color PuvodniBarva;
+
         private Texture2D textura;
 
         public Keys SmerNahoru { get; private set; }
@@ -25,12 +27,15 @@ namespace ZakladniCtverecek
         public Keys ZmenaZeleneBarvy { get; private set; }
         public Keys ZmenaModreBarvy { get; private set; }
 
-        public Ctverecek(int velikost, int rychlost, Color barva, float poziceX, float poziceY, GraphicsDevice zobrazovaciZarizeni, Keys nahoru, Keys dolu, Keys doleva, Keys doprava, Keys cervena, Keys zelena, Keys modra)
+        public Keys ResetBarvy { get; private set; }
+
+        public Ctverecek(int velikost, int rychlost, Color barva, float poziceX, float poziceY, GraphicsDevice zobrazovaciZarizeni, Keys nahoru, Keys dolu, Keys doleva, Keys doprava, Keys cervena, Keys zelena, Keys modra, Keys reset)
         {
             Velikost = velikost;
             Rychlost = rychlost;
 
             Barva = barva;
+            PuvodniBarva = barva;
 
             Pozice.X = poziceX;
             Pozice.Y = poziceY;
@@ -54,6 +59,8 @@ namespace ZakladniCtverecek
             ZmenaCerveneBarvy = cervena;
             ZmenaZeleneBarvy = zelena;
             ZmenaModreBarvy = modra;
+
+            ResetBarvy = reset;
         }
 
         public void aktualizovat()
@@ -84,6 +91,9 @@ namespace ZakladniCtverecek
                 Barva.G = 255;
             if (Barva.B < modraPred)
                 Barva.B = 255;
+
+            if (Keyboard.GetState().IsKeyDown(ResetBarvy))
+                Barva = PuvodniBarva;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
