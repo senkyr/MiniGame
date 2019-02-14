@@ -64,6 +64,13 @@ namespace ZakladniCtverecek
                 Pozice.X -= Rychlost;
             if (Keyboard.GetState().IsKeyDown(SmerDoprava))
                 Pozice.X += Rychlost;
+
+            if (Keyboard.GetState().IsKeyDown(ZmenaCerveneBarvy))
+                Barva.R++;
+            if (Keyboard.GetState().IsKeyDown(ZmenaZeleneBarvy))
+                Barva.G++;
+            if (Keyboard.GetState().IsKeyDown(ZmenaModreBarvy))
+                Barva.B++;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
