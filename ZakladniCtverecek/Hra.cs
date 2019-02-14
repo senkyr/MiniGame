@@ -43,7 +43,7 @@ namespace ZakladniCtverecek
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            ctverecek.aktualizovat();
+            ctverecek.aktualizovat(sirkaOkna, vyskaOkna);
 
             base.Update(gameTime);
         }

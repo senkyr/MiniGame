@@ -46,7 +46,7 @@ namespace ZakladniCtverecek
             SmerDolu = dolu;
         }
 
-        public void aktualizovat()
+        public void aktualizovat(int sirkaOkna, int vyskaOkna)
         {
             if (Keyboard.GetState().IsKeyDown(SmerNahoru))
                 Pozice.Y -= Rychlost;
@@ -56,6 +56,15 @@ namespace ZakladniCtverecek
                 Pozice.X -= Rychlost;
             if (Keyboard.GetState().IsKeyDown(SmerDoprava))
                 Pozice.X += Rychlost;
+
+            if (Pozice.X < 0)
+                Pozice.X = 0;
+            if (Pozice.X > sirkaOkna - Velikost)
+                Pozice.X = sirkaOkna - Velikost;
+            if (Pozice.Y < 0)
+                Pozice.Y = 0;
+            if (Pozice.Y > vyskaOkna - Velikost)
+                Pozice.Y = vyskaOkna - Velikost;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
