@@ -19,7 +19,11 @@ namespace ZakladniCtverecek
         public Keys SmerDoleva { get; private set; }
         public Keys SmerDoprava { get; private set; }
 
-        public Ctverecek(int velikost, int rychlost, Color barva, float poziceX, float poziceY, GraphicsDevice zobrazovaciZarizeni, Keys nahoru, Keys dolu, Keys doleva, Keys doprava)
+        public Keys ZmenaCerveneBarvy { get; private set; }
+        public Keys ZmenaZeleneBarvy { get; private set; }
+        public Keys ZmenaModreBarvy { get; private set; }
+
+        public Ctverecek(int velikost, int rychlost, Color barva, float poziceX, float poziceY, GraphicsDevice zobrazovaciZarizeni, Keys nahoru, Keys dolu, Keys doleva, Keys doprava, Keys cervena, Keys zelena, Keys modra)
         {
             Velikost = velikost;
             Rychlost = rychlost;
@@ -44,6 +48,10 @@ namespace ZakladniCtverecek
             SmerDoprava = doprava;
             SmerNahoru = nahoru;
             SmerDolu = dolu;
+
+            ZmenaCerveneBarvy = cervena;
+            ZmenaZeleneBarvy = zelena;
+            ZmenaModreBarvy = modra;
         }
 
         public void aktualizovat(int sirkaOkna, int vyskaOkna)
@@ -65,6 +73,13 @@ namespace ZakladniCtverecek
                 Pozice.Y = 0;
             if (Pozice.Y > vyskaOkna - Velikost)
                 Pozice.Y = vyskaOkna - Velikost;
+
+            if (Keyboard.GetState().IsKeyDown(ZmenaCerveneBarvy))
+                Barva.R++;
+            if (Keyboard.GetState().IsKeyDown(ZmenaZeleneBarvy))
+                Barva.G++;
+            if (Keyboard.GetState().IsKeyDown(ZmenaModreBarvy))
+                Barva.B++;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
