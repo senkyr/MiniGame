@@ -61,6 +61,10 @@ namespace ZakladniCtverecek
                 Pozice.X = 0;
             if (Pozice.X > sirkaOkna - Velikost)
                 Pozice.X = sirkaOkna - Velikost;
+            if (Pozice.Y < 0)
+                Pozice.Y = 0;
+            if (Pozice.Y > vyskaOkna - Velikost)
+                Pozice.Y = vyskaOkna - Velikost;
         }
 
         public void vykreslit(SpriteBatch spriteBatch)
